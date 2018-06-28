@@ -3,6 +3,14 @@
 menu:
   主页: /
   相册: /photos
+  归档: /archives
+
+
+love_time:
+  mname: 'zw'
+  wname: 'wj'
+  starttime: '2011-10-01 00:00:00'
+
 
 # SubNav
 subnav:
@@ -115,7 +123,7 @@ slider:
 #smart_menu:
 #  friends: false
 smart_menu:
-  innerArchive: '所有文章 '
+  innerArchive: '文章搜索 '
   friends: false
   aboutme: '关于我'
 
