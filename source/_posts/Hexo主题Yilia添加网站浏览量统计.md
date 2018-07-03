@@ -1,6 +1,6 @@
 ---
 title: Hexo主题Yilia添加网站浏览量统计
-date: 2018-06-25 15:13:00  // 指定发布日期
+date: 2018-06-25 15:13:00  
 tag: 网站统计
 category: Hexo
 ---

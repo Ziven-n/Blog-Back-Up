@@ -87,6 +87,14 @@
       url: config.url+url_for(post.path)
     }) %>
   <% } %>
+
+  <% if(theme.gitalk.enable){ %>
+  <%- partial('post/gitalk', {
+      key: post.slug,
+      title: post.title,
+      url: config.url+url_for(post.path)
+    }) %>
+  <% } %>
   
   <% if (theme.wangyiyun){ %>
   <%- partial('post/wangyiyun', {
@@ -95,6 +103,8 @@
       url: config.url+url_for(post.path)
     }) %>
   <% } %>
+
+  
 
   <% if (theme.changyan_appid && theme.changyan_conf){ %>
   <%- partial('post/changyan', {
@@ -121,6 +131,8 @@
       <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </section>
   <% } %>
+
+  
 
   <% if (theme.gitment_owner && theme.gitment_repo &&theme.gitment_oauth && theme.gitment_oauth.client_id && theme.gitment_oauth.client_secret){ %>
   <%- partial('post/gitment', {

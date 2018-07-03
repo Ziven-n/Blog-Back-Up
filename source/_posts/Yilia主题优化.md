@@ -1,6 +1,6 @@
 ---
 title: Yilia主题优化
-date: 2018-06-28 11:03:00  // 指定发布日期
+date: 2018-06-28 11:03:00  
 tag: yilia优化
 category: Hexo
 toc: true  // 开启文章标签
@@ -18,9 +18,9 @@ Hexo主题yilia持续优化中...
 
 ##### 实现方式
 
-打开博客路径themes/yilia/layout/layout.ejs
+打开博客路径`themes/yilia/layout/layout.ejs`
 
-在“</body>”前添加如下代码即可
+在`</body>`前添加如下代码即可
 
 
 ```
@@ -40,9 +40,9 @@ Hexo主题yilia持续优化中...
 
 ##### 实现方式
 
-在 themes/yilia/source 文件目录下增加[love.js](https://github.com/Ziven-n/Blog-Back-Up/blob/master/themes/yilia/source/love.js)文件
+在 `themes/yilia/source` 文件目录下增加[love.js](https://github.com/Ziven-n/Blog-Back-Up/blob/master/themes/yilia/source/love.js)文件
 
-然后在themes/yilia/layout/_partial/footer.ejs 文件， 在文件的最后， 添加以下代码：
+然后在`themes/yilia/layout/_partial/footer.ejs` 文件， 在文件的最后， 添加以下代码：
 
 
 ```
