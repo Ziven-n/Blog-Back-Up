@@ -136,15 +136,11 @@ slider:
 #  friends: false
 smart_menu:
   innerArchive: '文章搜索 '
-  friends: false
+  friends: '友情链接 '
   aboutme: '关于我'
 
 friends:
-  友情链接1: http://localhost:4000/
-  友情链接2: http://localhost:4000/
-  友情链接3: http://localhost:4000/
-  友情链接4: http://localhost:4000/
-  友情链接5: http://localhost:4000/
-  友情链接6: http://localhost:4000/
+  CocoaChina: http://www.cocoachina.com/bbs/thread.php?fid-21.html
+
 
 aboutme: 很好，你成功引起了我的注意～
