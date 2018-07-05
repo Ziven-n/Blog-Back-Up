@@ -1,7 +1,7 @@
 ---
 title: Hexo主题yilia增加gitalk评论插件
 date: 2018-07-03 15:37:30
-tags: gittalk
+tags: gitalk
 categories: Hexo
 ---
 
