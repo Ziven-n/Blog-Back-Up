@@ -19,7 +19,7 @@ categories:
     data-id="33211676" 
     data-server="netease" 
     data-type="song"
-    data-mutex="false"
+    data-mutex="true"
     data-loop="none">
 </div>
 
@@ -31,7 +31,7 @@ categories:
     data-id="798795319" 
     data-server="netease" 
     data-type="playlist"
-    data-order="order" 
+    data-order="list" 
     data-listmaxheight="240px"
     data-theme="#FF4081">
 </div>
@@ -43,7 +43,7 @@ categories:
     data-id="639737355" 
     data-server="netease" 
     data-type="playlist"
-    data-order="order" 
+    data-order="list" 
     data-listmaxheight="240px"
     data-theme="#FF4081">
 </div>
