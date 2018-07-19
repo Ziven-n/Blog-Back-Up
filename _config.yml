@@ -10,6 +10,13 @@ author: Ziven
 language: zh-Hans
 timezone: UTC
 
+# 谷歌/百度站点地图
+sitemap: 
+    path: sitemap.xml
+baidusitemap:
+    path: baidusitemap.xml
+
+
 live2d:
   enable: true              # 是否开启
   scriptFrom: local         # 默认
@@ -35,7 +42,7 @@ live2d:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://ziven.cc
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
