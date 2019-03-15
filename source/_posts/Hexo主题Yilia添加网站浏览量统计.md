@@ -31,7 +31,7 @@ category: Hexo
 
 
 ```
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 ```
 
 打开自己的blog本地仓库路径

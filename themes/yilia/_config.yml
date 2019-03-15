@@ -14,10 +14,6 @@ love_time:
 
 
 
-
-
-
-
 # SubNav
 subnav:
   github: "https://github.com/Ziven-n"
@@ -61,7 +57,7 @@ reward_type: 2
 # 打赏wording
 reward_wording: '扫码加好友😄'
 # 支付宝二维码图片地址，跟你设置头像的方式一样。比如：/assets/img/alipay.jpg
-alipay: /img/alipay.png
+alipay: 
 # 微信二维码图片地址
 weixin: /img/wechat.png
 
@@ -149,4 +145,5 @@ friends:
   CocoaChina: http://www.cocoachina.com/bbs/thread.php?fid-21.html
 
 
-aboutme: 很好！<br> 你成功引起了我的注意～
+aboutme: 很好！<br><br> 你成功引起了我的注意～
+aboutmepic: /img/wechat.jpg

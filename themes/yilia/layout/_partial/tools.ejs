@@ -101,7 +101,11 @@
     <%if(hasAboutme){%>
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	<%if(theme.aboutme){%>
-  	  		<div class="aboutme-wrap" id="js-aboutme"><%=theme.aboutme%></div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">
+          <div>
+          <%=theme.aboutme%>
+          <img src=<%=theme.aboutmepic%> height="150" width="150"></div>
+          </div>
   	  	<%}%>
     	</section>
     <%}%>
