@@ -30,7 +30,7 @@ subnav:
   #mail: "mailto:litten225@qq.com"
   #facebook: "#"
   #google: "#"
-  twitter: "https://twitter.com/Ziven233"
+  # twitter: "https://twitter.com/Ziven233"
   #linkedin: "#"
 
 rss: /atom.xml

@@ -99,7 +99,7 @@ theme: yilia
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
  type: git
- repo: https://github.com/Ziven-n/Ziven-n.github.io
+ repo: git@github.com:Ziven-n/Ziven-n.github.io.git
 
 jsonContent:
  meta: false
