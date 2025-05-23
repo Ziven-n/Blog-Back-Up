@@ -57,7 +57,7 @@ reward_type: 2
 # 打赏wording
 reward_wording: '扫码加好友😄'
 # 支付宝二维码图片地址，跟你设置头像的方式一样。比如：/assets/img/alipay.jpg
-alipay: 
+alipay: /img/alipay1
 # 微信二维码图片地址
 weixin: /img/wechat.png
 
