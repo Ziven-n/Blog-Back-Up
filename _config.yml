@@ -2,7 +2,7 @@
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
-# Site
+# Site //在主题下设置，这里好像失效了
 title: Ziven
 subtitle: 赠人玫瑰 手有余香
 description: 😯😯
@@ -13,8 +13,16 @@ timezone: UTC
 # 谷歌/百度站点地图
 sitemap: 
     path: sitemap.xml
+    tag: true
+    category: true
 baidusitemap:
     path: baidusitemap.xml
+
+baidu_url_submit:
+  count: 100 # 提交最新的多少个链接
+  host: ziven.cc # 在百度站长平台中注册的域名
+  token: SvtSdPHJ8NZlg3Un # 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里!
+  path: baidu_urls.txt 
 
 live2d:
   enable: true              # 是否开启
@@ -97,9 +105,11 @@ theme: yilia
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
- type: git
- repo: git@github.com:Ziven-n/Ziven-n.github.io.git
- branch: master
+  - type: git
+    repo: git@github.com:Ziven-n/Ziven-n.github.io.git
+    branch: master
+  - type: baidu_url_submitter
+
 
 jsonContent:
  meta: false

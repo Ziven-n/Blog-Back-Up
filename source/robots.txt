@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/
+
+Sitemap: https://ziven.cc/sitemap.xml
+Sitemap: https://ziven.cc/baidusitemap.xml
