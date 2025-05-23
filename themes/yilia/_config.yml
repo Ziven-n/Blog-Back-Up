@@ -17,7 +17,7 @@ love_time:
 # SubNav
 subnav:
   github: "https://github.com/Ziven-n"
-  weibo: "https://weibo.com/5646297969/profile?topnav=1&wvr=6&is_all=1"
+  # weibo: "https://weibo.com/5646297969/profile?topnav=1&wvr=6&is_all=1"
   #rss: "#"
   #zhihu: "#"
   #qq: "#"
@@ -25,9 +25,9 @@ subnav:
   #jianshu: "#"
   #douban: "#"
   #segmentfault: "#"
-  # bilibili: "https://space.bilibili.com/28764008/#/"
+  bilibili: "https://space.bilibili.com/431426014"
   #acfun: "#"
-  #mail: "mailto:litten225@qq.com"
+  mail: "mailto:zivens233@gmail.com"
   #facebook: "#"
   #google: "#"
   # twitter: "https://twitter.com/Ziven233"
@@ -122,7 +122,7 @@ gitalk:
 # 样式定制 - 一般不需要修改，除非有很强的定制欲望…
 style:
   # 头像上面的背景颜色
-  header: '#4d4d4d'
+  header: '#C0C0C0'
   # 右滑板块背景
   slider: 'linear-gradient(200deg,#a0cfe4,#e8c37e)'
 
@@ -142,8 +142,12 @@ smart_menu:
   aboutme: '关于我'
 
 friends:
-  CocoaChina: http://www.cocoachina.com/bbs/thread.php?fid-21.html
-
+  flutter插件库: https://pub-web.flutter-io.cn
+  flutter中文网: https://docs.flutter.cn/cookbook
+  json数据整理: http://json.parser.online.fr
+  json转model: https://caijinglong.github.io/json2dart/index_ch.html
+  十六进制颜色码: https://www.sioe.cn/yingyong/yanse-rgb-16/
+  
 
 aboutme: 很好！<br><br> 你成功引起了我的注意～
 aboutmepic: /img/wechat.jpg
