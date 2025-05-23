@@ -4,14 +4,15 @@
 <!-- Import meting.js -->
 <script src="https://cdn.jsdelivr.net/npm/meting@1.1.1/dist/Meting.min.js"></script>
 
-<!-- 被干掉的不蒜子  -->
-<div style="display: none;">
-  <span id="busuanzi_container_page_pv"></span><span id="busuanzi_container_site_pv"></span>
-</div>
+
 
 
 <article id="<%= post.layout %>-<%= post.slug %>"
   class="article article-type-<%= post.layout %> <%if(index){%> article-index<%}%>" itemscope itemprop="blogPost">
+  <!-- 被干掉的不蒜子  -->
+  <div style="display: none;">
+    <span id="busuanzi_container_site_uv"></span><span id="busuanzi_container_site_pv"></span>
+  </div>
   <div class="article-inner">
     <% if (post.link || post.title){ %>
       <header class="article-header">

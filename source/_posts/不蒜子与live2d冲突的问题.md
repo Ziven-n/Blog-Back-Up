@@ -20,7 +20,7 @@ date: 2025-05-23 18:19:22
 
 ```
 <div style="display: none;">
-  <span id="busuanzi_container_page_pv"></span><span id="busuanzi_container_site_pv"></span>
+  <span id="busuanzi_container_site_uv"></span><span id="busuanzi_container_site_uv"></span>
 </div>
 ```
 
