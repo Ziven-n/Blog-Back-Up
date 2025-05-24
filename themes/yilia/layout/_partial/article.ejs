@@ -9,10 +9,7 @@
 
 <article id="<%= post.layout %>-<%= post.slug %>"
   class="article article-type-<%= post.layout %> <%if(index){%> article-index<%}%>" itemscope itemprop="blogPost">
-  <!-- 被干掉的不蒜子  -->
-  <div style="display: none;">
-    <span id="busuanzi_container_site_uv"></span><span id="busuanzi_container_site_pv"></span>
-  </div>
+
   <div class="article-inner">
     <% if (post.link || post.title){ %>
       <header class="article-header">
@@ -23,9 +20,12 @@
             <br />
             <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
               <span class="icon-sort"></span>
-              <span id="busuanzi_container_page_pv" style="color:#C4C5FD;font-size:14px;">
-                阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
-              </span>
+
+              <span style="color:#C4C5FD;font-size:14px;">
+                阅读数: <span id="vercount_value_page_pv"></span>次 &nbsp;&nbsp;
+
+                <!-- 阅读数: <span id="busuanzi_value_page_pv" style=" color:#C4C5FD;font-size:14px"></span>次 &nbsp;&nbsp; -->
+
             </a>
             <% } %>
 

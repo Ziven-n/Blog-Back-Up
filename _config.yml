@@ -114,7 +114,7 @@ deploy:
   - type: git
     repo: git@github.com:Ziven-n/Ziven-n.github.io.git
     branch: master
-  - type: baidu_url_submitter
+  # - type: baidu_url_submitter
 
 
 jsonContent:
