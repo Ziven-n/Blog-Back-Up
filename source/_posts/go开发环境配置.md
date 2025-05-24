@@ -33,7 +33,7 @@ open ~/.zshrc
 ####  添加以下内容
 ```
 export GOPATH=$HOME/go
-export GOROOT=/opt/homebrew/Cellar/go
+export GOROOT="$(brew --prefix golang)/libexec"
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # 设置 Go 代理（国内建议使用）
@@ -55,3 +55,17 @@ go env
 ```
 brew info go
 ```
+#### 打开```vscode``` 安装go插件
+安装完成后打开命令面板
+搜索```go install/update Tools```点击后全选
+
+创建新项目文件夹
+比如```testapi```
+
+在命令行进入此文件夹
+执行
+```
+go mod init testapi
+```
+
+至此可以创建.go文件开始编码
