@@ -146,9 +146,10 @@ friends:
   flutter插件库: https://pub-web.flutter-io.cn
   flutter中文网: https://docs.flutter.cn/cookbook
   json数据整理: http://json.parser.online.fr
-  json转model: https://caijinglong.github.io/json2dart/index_ch.html
+  flutter-json转model: https://caijinglong.github.io/json2dart/index_ch.html
   十六进制颜色码: https://www.sioe.cn/yingyong/yanse-rgb-16/
-  
+  go教程中文版: https://go.p2hp.com/go.dev/doc/tutorial/getting-started
+  go教程英文版: https://go.dev/doc/tutorial/getting-started 
 
-aboutme: 很好！<br><br> 你成功引起了我的注意～
-aboutmepic: /img/wechat.jpg
+aboutme: 又菜又爱折腾
+# aboutmepic: /img/wechat.jpg
