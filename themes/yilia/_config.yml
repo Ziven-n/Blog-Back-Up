@@ -126,6 +126,7 @@ style:
   header: '#C0C0C0'
   # 右滑板块背景
   slider: 'linear-gradient(200deg,#a0cfe4,#e8c37e)'
+  header_image: /img/sky.png
 
 # slider的设置
 slider:

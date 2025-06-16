@@ -1,115 +1,141 @@
-<% var defaultBg = '#4d4d4d'; %>
-<div class="overlay" style="background: <%= theme.style && theme.style.header ? theme.style.header : defaultBg %>"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="<%=theme.root%>" class="profilepic">
-			<img src="<%=theme.avatar%>" class="js-avatar">
-		</a>
-		<hgroup>
-		  <h1 class="header-author"><a href="<%=theme.root%>"><%=theme.author%></a></h1>
-		</hgroup>
-		<% if (theme.subtitle){ %>
-		<p class="header-subtitle"><%=theme.subtitle%></p>
-		<%}%>
+<% var defaultBg='#4d4d4d' ; %>
+    <div class="overlay"
+        style="background: <%= theme.style && theme.style.header_image ? 'url(' + theme.style.header_image + ') center center / cover no-repeat' : defaultBg %>">
+    </div>
+    <style>
+        .overlay {
+            background-size: cover !important;
+            background-position: center !important;
+            transition: all 0.3s ease;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <!-- <div class="overlay" style="background: <%= theme.style && theme.style.header ? theme.style.header : defaultBg %>"> -->
+    <!-- </div> -->
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="<%=theme.root%>" class="profilepic">
+                <img src="<%=theme.avatar%>" class="js-avatar">
+            </a>
+            <hgroup>
+                <h1 class="header-author"><a href="<%=theme.root%>">
+                        <%=theme.author%>
+                    </a></h1>
+            </hgroup>
+            <% if (theme.subtitle){ %>
+                <p class="header-subtitle">
+                    <%=theme.subtitle%>
+                </p>
+                <%}%>
 
-		<nav class="header-menu">
-			<ul>
-			<% for (var i in theme.menu){ %>
-				<li><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
-	        <%}%>
-			</ul>
-		</nav>
+                    <nav class="header-menu">
+                        <ul>
+                            <% for (var i in theme.menu){ %>
+                                <li><a href="<%- url_for(theme.menu[i]) %>">
+                                        <%= i %>
+                                    </a></li>
+                                <%}%>
+                        </ul>
+                    </nav>
 
-		<nav class="header-smart-menu">
-    		<% for (var i in theme.smart_menu){ %>
-    			<% if(theme.smart_menu[i]){ %>
-    			<a q-on="click: openSlider(e, '<%-i%>')" href="javascript:void(0)"><%= theme.smart_menu[i] %></a>
-    			<% } %>
-            <%}%>
-		</nav>
+                    <nav class="header-smart-menu">
+                        <% for (var i in theme.smart_menu){ %>
+                            <% if(theme.smart_menu[i]){ %>
+                                <a q-on="click: openSlider(e, '<%-i%>')" href="javascript:void(0)">
+                                    <%= theme.smart_menu[i] %>
+                                </a>
+                                <% } %>
+                                    <%}%>
+                    </nav>
 
-		<div style="position:fix";bottom:-120px;margin-top:100px;left:36px;width:76%;>
-		     
-	    </div>
+                    <div style="position:fix" ;bottom:-120px;margin-top:100px;left:36px;width:76%;>
 
-<nav class="header-lovetime">
-    <% if(theme.love_time['mname']){ %>
-        <div class="lovetime">
-            <section class="love-time">
-                <p class="love-people">
-                    <%= theme.love_time['mname'] %> 和
-                        <%= theme.love_time['wname'] %> 走过了：</p>
-                <p id="love-time-count"></p>
-            </section>
-        </div>
-        <style>
-            /* 计时器 */
-            .header-lovetime{
-                animation: fade-in;
-                -webkit-animation: fade-in 1s;
-            }
-            .love-time {
-                z-index: 999;
-                bottom: 90px;
-                left: 30px;
-                margin-bottom: 12px;
-                text-align: center;
-                font-size: 15px;
-                color: #9a8c8c;
-                border-radius: 5px;
-            }
+                    </div>
 
-            .love-people {
-                font-size: 13px;
-            }
-            .love-time-count,
-            .love-time-asume {
-                font-size: 10px;
-            }
-        </style>
-        <script>
-            var starttime = "<%= theme.love_time['starttime'] %>";
-            setInterval(function () { interval(starttime); }, 100);
-            function interval(e) {
-                var date1 = new Date(e);  //开始时间
-                var date2 = new Date();    //结束时间
-                var date3 = date2.getTime() - date1.getTime()  //时间差的毫秒数
+                    <nav class="header-lovetime">
+                        <% if(theme.love_time['mname']){ %>
+                            <div class="lovetime">
+                                <section class="love-time">
+                                    <p class="love-people">
+                                        <%= theme.love_time['mname'] %> 和
+                                            <%= theme.love_time['wname'] %> 走过了：
+                                    </p>
+                                    <p id="love-time-count"></p>
+                                </section>
+                            </div>
+                            <style>
+                                /* 计时器 */
+                                .header-lovetime {
+                                    animation: fade-in;
+                                    -webkit-animation: fade-in 1s;
+                                }
 
-                //计算出相差天数
-                var days = Math.floor(date3 / (24 * 3600 * 1000))
+                                .love-time {
+                                    z-index: 999;
+                                    bottom: 90px;
+                                    left: 30px;
+                                    margin-bottom: 12px;
+                                    text-align: center;
+                                    font-size: 15px;
+                                    color: #9a8c8c;
+                                    border-radius: 5px;
+                                }
 
-                //计算出小时数
+                                .love-people {
+                                    font-size: 13px;
+                                }
 
-                var leave1 = date3 % (24 * 3600 * 1000)    //计算天数后剩余的毫秒数
-                var hours = Math.floor(leave1 / (3600 * 1000))
-                //计算相差分钟数
-                var leave2 = leave1 % (3600 * 1000)        //计算小时数后剩余的毫秒数
-                var minutes = Math.floor(leave2 / (60 * 1000))
+                                .love-time-count,
+                                .love-time-asume {
+                                    font-size: 10px;
+                                }
+                            </style>
+                            <script>
+                                var starttime = "<%= theme.love_time['starttime'] %>";
+                                setInterval(function () { interval(starttime); }, 100);
+                                function interval(e) {
+                                    var date1 = new Date(e);  //开始时间
+                                    var date2 = new Date();    //结束时间
+                                    var date3 = date2.getTime() - date1.getTime()  //时间差的毫秒数
 
+                                    //计算出相差天数
+                                    var days = Math.floor(date3 / (24 * 3600 * 1000))
 
-                //计算相差秒数
-                var leave3 = leave2 % (60 * 1000)      //计算分钟数后剩余的毫秒数
-                var seconds = Math.round(leave3 / 1000)
+                                    //计算出小时数
 
-                var countDays = document.getElementById("love-time-count")
-                countDays.innerHTML = days + "天 " + hours + "小时 " + minutes + "分钟 " + seconds + "秒 "
-
-
-            }
-        </script>
-        <% } %>
-</nav>
-
-		<nav class="header-nav">
-			<div class="social">
-				<% for (var i in theme.subnav){ %>
-					<a class="<%= i %>" target="_blank" href="<%- url_for(theme.subnav[i]) %>" title="<%= i %>"><i class="icon-<%= i %>"></i></a>
-		        <%}%>
-			</div>
-		</nav>
+                                    var leave1 = date3 % (24 * 3600 * 1000)    //计算天数后剩余的毫秒数
+                                    var hours = Math.floor(leave1 / (3600 * 1000))
+                                    //计算相差分钟数
+                                    var leave2 = leave1 % (3600 * 1000)        //计算小时数后剩余的毫秒数
+                                    var minutes = Math.floor(leave2 / (60 * 1000))
 
 
-		
-	</header>
+                                    //计算相差秒数
+                                    var leave3 = leave2 % (60 * 1000)      //计算分钟数后剩余的毫秒数
+                                    var seconds = Math.round(leave3 / 1000)
 
-</div>
+                                    var countDays = document.getElementById("love-time-count")
+                                    countDays.innerHTML = days + "天 " + hours + "小时 " + minutes + "分钟 " + seconds + "秒 "
+
+
+                                }
+                            </script>
+                            <% } %>
+                    </nav>
+
+                    <nav class="header-nav">
+                        <div class="social">
+                            <% for (var i in theme.subnav){ %>
+                                <a class="<%= i %>" target="_blank" href="<%- url_for(theme.subnav[i]) %>"
+                                    title="<%= i %>"><i class="icon-<%= i %>"></i></a>
+                                <%}%>
+                        </div>
+                    </nav>
+
+
+
+        </header>
+
+    </div>
