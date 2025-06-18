@@ -79,7 +79,7 @@ google_analytics: ''
 favicon: /icon.ico
 
 #你的头像url
-avatar: /img/正方形狗头.png
+avatar: /img/girl.gif
 
 #是否开启分享
 share_jia: false
@@ -151,6 +151,7 @@ friends:
   十六进制颜色码: https://www.sioe.cn/yingyong/yanse-rgb-16/
   go教程中文版: https://go.p2hp.com/go.dev/doc/tutorial/getting-started
   go教程英文版: https://go.dev/doc/tutorial/getting-started 
+  Markdown编辑器: https://demo.hedgedoc.org
 
 aboutme: 又菜又爱折腾
 # aboutmepic: /img/wechat.jpg
