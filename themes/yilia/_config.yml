@@ -14,7 +14,6 @@ love_time:
 subtitle: 赠人玫瑰 手有余香
 author: Ziven
 
-
 # SubNav
 subnav:
   github: "https://github.com/Ziven-n"
@@ -125,13 +124,15 @@ style:
   # 头像上面的背景颜色
   header: '#C0C0C0'
   # 右滑板块背景
-  slider: 'linear-gradient(200deg,#a0cfe4,#e8c37e)'
+  # slider: 'linear-gradient(200deg,#a0cfe4,#e8c37e)'
+  # slider: 'linear-gradient(200deg,#87CEFA,#F5DEB3)'
+  slider: 'linear-gradient(200deg,#F5DEB3,#87CEFA)'
   header_image: /img/sky.png
 
 # slider的设置
 slider:
   # 是否默认展开tags板块
-  showTags: false
+  showTags: true
 
 # 智能菜单
 # 如不需要，将该对应项置为false
@@ -148,6 +149,8 @@ friends:
   flutter中文网: https://docs.flutter.cn/cookbook
   json数据整理: http://json.parser.online.fr
   flutter-json转model: https://caijinglong.github.io/json2dart/index_ch.html
+  Google Icons: https://fonts.google.com/icons
+  App图标生成: https://icon.wuruihong.com
   十六进制颜色码: https://www.sioe.cn/yingyong/yanse-rgb-16/
   go教程中文版: https://go.p2hp.com/go.dev/doc/tutorial/getting-started
   go教程英文版: https://go.dev/doc/tutorial/getting-started 

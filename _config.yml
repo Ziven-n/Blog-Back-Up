@@ -10,6 +10,7 @@ author: Ziven
 language: zh-Hans
 timezone: UTC
 
+
 # 谷歌/百度站点地图
 sitemap: 
     path: sitemap.xml
@@ -41,10 +42,10 @@ live2d:
     # use: live2d-widget-model-tsumiki  #绿头发妹子
   display:
     position: left         # 在博客的左边还是右边显示
-    width: 75              # 边框宽度
-    height: 150             # 边框高度
-    hOffset: 75             # 正数往右移
-    vOffset: -30            # 正数往上移
+    width: 60              # 边框宽度
+    height: 120             # 边框高度
+    hOffset: 10             # 正数往右移
+    vOffset: -15            # 正数往上移
   mobile:
     show: false             # 是否在手机上显示
   dialog:               # 添加对话框设置
@@ -69,6 +70,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+  # - music-player.html
 
 # Writing
 new_post_name: :title.md # File name of new posts
