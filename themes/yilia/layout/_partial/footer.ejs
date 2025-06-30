@@ -24,3 +24,29 @@
 
 <!--页面点击小红心-->
 <script type="text/javascript" src="/love.js"></script>
+
+<!-- APlayer -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+
+<!-- 网易云歌单播放器，固定在左下角 -->
+<meting-js server="netease" type="playlist" id="639737355" fixed="false" order="list" autoplay="true" mini="false"
+	theme="#64ffda" list-folded="true" list-max-height="300px">
+</meting-js>
+
+<style>
+	.aplayer {
+		position: fixed;
+		left: 10px;
+		bottom: 0px;
+		width: 280px;
+		z-index: 999;
+		border-radius: 8px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+		background: #fff;
+		pointer-events: auto !important;
+	}
+</style>

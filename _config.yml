@@ -44,7 +44,7 @@ live2d:
     position: left         # 在博客的左边还是右边显示
     width: 60              # 边框宽度
     height: 120             # 边框高度
-    hOffset: 10             # 正数往右移
+    hOffset: 5             # 正数往右移
     vOffset: -15            # 正数往上移
   mobile:
     show: false             # 是否在手机上显示
