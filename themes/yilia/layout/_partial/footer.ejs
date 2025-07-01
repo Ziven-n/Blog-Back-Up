@@ -107,6 +107,10 @@
 				}, 500);
 			}
 		}, 400);
+
+		// 清空文章阅读数，避免显示错误数字或闪烁
+		var pvSpan = document.getElementById('vercount_value_page_pv');
+		if (pvSpan) pvSpan.textContent = '';
 	});
 
 	function insertMetingPlayer() {
