@@ -31,22 +31,130 @@
 <!-- MetingJS -->
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
+<!-- 引入 PJAX 实现局部刷新 -->
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+<script>
+	// 初始化 PJAX，只刷新 .mid-col 区域
+	window.pjax = new Pjax({
+		elements: "a:not([target='_blank']):not([href^='#']):not([href^='javascript:'])", // 更精确的链接选择器
+		selectors: [
+			"title",
+			".mid-col .body-wrap", // 只刷新文章内容区域
+			".mid-col .menu-l" // 只刷新菜单区域
+		],
+		cacheBust: false,
+		timeout: 0
+	});
 
-<!-- 网易云歌单播放器，固定在左下角 -->
-<meting-js server="netease" type="playlist" id="639737355" fixed="false" order="list" autoplay="true" mini="false"
-	theme="#64ffda" list-folded="true" list-max-height="300px">
-</meting-js>
+	// PJAX 完成后，重新初始化所有功能
+	document.addEventListener('pjax:complete', function () {
+		// 延迟执行 slider 初始化，确保 DOM 已更新
+		setTimeout(function () {
+			if (typeof init === 'function') {
+				init();
+			}
+		}, 200);
+
+		// 重新执行访问统计脚本
+		setTimeout(function () {
+			// 移除旧的统计脚本
+			var oldScripts = document.querySelectorAll('script[src*="vercount.one"]');
+			oldScripts.forEach(function (script) {
+				script.remove();
+			});
+
+			// 重新加载 Vercount 统计脚本
+			var script = document.createElement('script');
+			script.src = 'https://vercount.one/js';
+			script.defer = true;
+			document.head.appendChild(script);
+		}, 300);
+
+		// 重新初始化相册功能
+		setTimeout(function () {
+			// 检查是否在相册页面
+			if (window.location.pathname.includes('/photos/')) {
+				// 移除旧的相册脚本
+				var oldInsScripts = document.querySelectorAll('script[src*="ins.js"]');
+				oldInsScripts.forEach(function (script) {
+					script.remove();
+				});
+
+				// 重新加载相册脚本，脚本会自动初始化
+				var insScript = document.createElement('script');
+				insScript.src = '/photos/ins.js';
+				document.head.appendChild(insScript);
+
+				// 同时重新加载CSS文件
+				var oldCss = document.querySelector('link[href*="ins.css"]');
+				if (oldCss) {
+					oldCss.remove();
+				}
+				var cssLink = document.createElement('link');
+				cssLink.rel = 'stylesheet';
+				cssLink.href = '/photos/ins.css';
+				document.head.appendChild(cssLink);
+
+				// 强制刷新相册内容
+				setTimeout(function () {
+					var instagramDiv = document.querySelector('.instagram');
+					if (instagramDiv && instagramDiv.innerHTML.includes('图片正在加载中')) {
+						// 如果还在显示加载中，重新触发初始化
+						if (typeof Ins !== 'undefined' && Ins.init) {
+							Ins.init();
+						}
+					}
+				}, 500);
+			}
+		}, 400);
+	});
+
+	function insertMetingPlayer() {
+		if (!document.querySelector('meting-js')) {
+			var meting = document.createElement('meting-js');
+			meting.setAttribute('server', 'netease');
+			meting.setAttribute('type', 'playlist');
+			meting.setAttribute('id', '639737355');
+			meting.setAttribute('fixed', 'false');
+			meting.setAttribute('order', 'list');
+			meting.setAttribute('autoplay', 'true');
+			meting.setAttribute('mini', 'false');
+			meting.setAttribute('theme', '#64ffda');
+			meting.setAttribute('list-folded', 'true');
+			meting.setAttribute('list-max-height', '300px');
+			meting.setAttribute('muted', 'true');
+			document.body.appendChild(meting);
+		}
+	}
+	insertMetingPlayer();
+	document.addEventListener('pjax:complete', insertMetingPlayer);
+</script>
 
 <style>
 	.aplayer {
-		position: fixed;
-		left: 10px;
-		bottom: 0px;
-		width: 280px;
-		z-index: 999;
+		position: fixed !important;
+		left: 10px !important;
+		bottom: 0px !important;
+		width: 280px !important;
+		z-index: 9999 !important;
 		border-radius: 8px;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-		background: #fff;
+		background: #fff !important;
 		pointer-events: auto !important;
+		right: auto !important;
+		transform: none !important;
+		top: auto !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		float: none !important;
+		clear: none !important;
+		/* 更强的约束 */
+		display: block !important;
+		visibility: visible !important;
+		opacity: 1 !important;
+		max-width: 280px !important;
+		min-width: 280px !important;
+		max-height: none !important;
+		min-height: auto !important;
 	}
 </style>

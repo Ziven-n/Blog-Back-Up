@@ -29,8 +29,8 @@ function setScrollZero() {
 
 function init() {
 	let app = new Q({
-	    el: '#container',
-	    data: {
+		el: '#container',
+		data: {
 			isCtnShow: false,
 			isShow: 0,
 			innerArchive: false,
@@ -41,63 +41,81 @@ function init() {
 			showTags: false,
 			search: ''
 		},
-	    methods: {
-	    	stop: (e) => {
-	    		e.stopPropagation()
-	    	},
-	    	choseTag: (e, name) => {
-	    		app.$set('search', '#' + (name ? name : e.target.innerHTML))
-	    	},
-	    	clearChose: (e) => {
-	    		app.$set('search', '')
-	    	},
-	    	toggleTag: (e) => {
-	    		app.$set('showTags', !app.showTags)
-	    		window.localStorage && window.localStorage.setItem(localTagKey, app.showTags)
-	    	},
-	        openSlider: (e, type) => {
-	        	e.stopPropagation()
-	        	if (!type) {
-	        		type = 'innerArchive'
-	        	}
+		methods: {
+			stop: (e) => {
+				e.stopPropagation()
+			},
+			choseTag: (e, name) => {
+				app.$set('search', '#' + (name ? name : e.target.innerHTML))
+			},
+			clearChose: (e) => {
+				app.$set('search', '')
+			},
+			toggleTag: (e) => {
+				app.$set('showTags', !app.showTags)
+				window.localStorage && window.localStorage.setItem(localTagKey, app.showTags)
+			},
+			openSlider: (e, type) => {
+				e.stopPropagation()
+				if (!type) {
+					type = 'innerArchive'
+				}
 				// innerArchive: '所有文章'
-  				// friends: '友情链接'
-  				// aboutme: '关于我'
-  				app.$set('innerArchive', false)
-  				app.$set('friends', false)
-  				app.$set('aboutme', false)
-  				app.$set(type, true)
-  				app.$set('isShow', true)
-  				app.$set('isCtnShow', true)
-  				setScrollZero()
-			}
-	    },
-	    filters: {
-	    	isFalse: (val) => {
-	    		return val === false
-	    	},
-	    	isEmptyStr: (str) => {
-	    		return str === ''
-	    	},
-	    	isNotEmptyStr: (str) => {
-	    		return str !== ''
-	    	},
-	    	urlformat: (str) => {
+				// friends: '友情链接'
+				// aboutme: '关于我'
+				app.$set('innerArchive', false)
+				app.$set('friends', false)
+				app.$set('aboutme', false)
+				app.$set(type, true)
+				app.$set('isShow', true)
+				app.$set('isCtnShow', true)
+				setScrollZero()
+			},
+			searchPjaxClick: function(e, path) {
+				if (window.Pjax && window.pjax) {
+					e.preventDefault();
+					var url = path;
+					if (!/^https?:/.test(url)) {
+						url = window.yiliaConfig.root + url.replace(/^\//, '');
+					}
+					if (typeof window.pjax.handleClick === 'function') {
+						var a = document.createElement('a');
+						a.href = url;
+						window.pjax.handleClick({ currentTarget: a, preventDefault: () => { } }, a);
+					} else if (typeof window.pjax.loadUrl === 'function') {
+						window.pjax.loadUrl(url);
+					} else {
+						window.location.href = url;
+					}
+				}
+			},
+		},
+		filters: {
+			isFalse: (val) => {
+				return val === false
+			},
+			isEmptyStr: (str) => {
+				return str === ''
+			},
+			isNotEmptyStr: (str) => {
+				return str !== ''
+			},
+			urlformat: (str) => {
 				if (window.yiliaConfig && window.yiliaConfig.root) {
 					return window.yiliaConfig.root + str
 				}
-	    		return '/' + str
-	    	},
-	    	tagformat: (str) => {
-	    		return '#' + str
-	    	},
-	    	dateformat: (str) => {
-	    		let d = new Date(str)
-	    		return d.getFullYear() + '-' + fixzero((d.getMonth() + 1)) + '-' + fixzero(d.getDate())
-	    	}
-	    },
-	    ready: () => {
-	    }
+				return '/' + str
+			},
+			tagformat: (str) => {
+				return '#' + str
+			},
+			dateformat: (str) => {
+				let d = new Date(str)
+				return d.getFullYear() + '-' + fixzero((d.getMonth() + 1)) + '-' + fixzero(d.getDate())
+			}
+		},
+		ready: () => {
+		}
 	})
 
 	function handleSearch(val) {
@@ -108,32 +126,55 @@ function init() {
 			type = 'tag'
 		}
 		let items = app.items
-	  	items.forEach((item) => {
-	  		let matchTitle = false
-	  		if (item.title.toLowerCase().indexOf(val) > -1) {
-	  			matchTitle = true
-	  		}
+		items.forEach((item) => {
+			let matchTitle = false
+			if (item.title.toLowerCase().indexOf(val) > -1) {
+				matchTitle = true
+			}
 
-	  		let matchTags = false
-	  		item.tags.forEach((tag) => {
-	  			if (tag.name.toLowerCase().indexOf(val) > -1) {
-	      			matchTags = true
-	      		}
-	  		})
+			let matchTags = false
+			item.tags.forEach((tag) => {
+				if (tag.name.toLowerCase().indexOf(val) > -1) {
+					matchTags = true
+				}
+			})
 
-	  		if ((type === 'title' && matchTitle) || (type === 'tag' && matchTags)) {
-	  			item.isShow = true
-	  		} else {
-	  			item.isShow = false
-	  		}
-	  	})
-	  	app.$set('items', items)
+			if ((type === 'title' && matchTitle) || (type === 'tag' && matchTags)) {
+				item.isShow = true
+			} else {
+				item.isShow = false
+			}
+		})
+		app.$set('items', items)
+		// 每次渲染后绑定PJAX
+		bindSearchResultPjax();
 	}
 
-	app.$watch('search', function(val, oldVal){
+	function bindSearchResultPjax() {
+		let links = document.querySelectorAll('.search-title');
+		links.forEach(function (a) {
+			// 先移除已有的监听（防止重复绑定）
+			a.removeEventListener('click', a._pjaxClick, false);
+			a._pjaxClick = function (e) {
+				if (window.Pjax && window.pjax) {
+					e.preventDefault();
+					if (typeof window.pjax.handleClick === 'function') {
+						window.pjax.handleClick({ currentTarget: a, preventDefault: () => { } }, a);
+					} else if (typeof window.pjax.loadUrl === 'function') {
+						window.pjax.loadUrl(a.href);
+					} else {
+						window.location.href = a.href;
+					}
+				}
+			};
+			a.addEventListener('click', a._pjaxClick, false);
+		});
+	}
+
+	app.$watch('search', function (val, oldVal) {
 		window.localStorage && window.localStorage.setItem(localSearchKey, val)
 		handleSearch(val)
-    })
+	})
 
 	window.fetch(window.yiliaConfig.root + 'content.json?t=' + (+ new Date()), {
 		method: 'get',
@@ -193,6 +234,53 @@ function init() {
 			return false
 		}
 	}
+
+	// 捕获阶段事件委托：劫持搜索结果点击，强制用 PJAX 跳转
+	document.body.addEventListener('click', function (e) {
+		let a = e.target.closest('a.search-title');
+		console.log('PJAX search1', a);
+		if (a && window.Pjax) {
+			if (a.offsetParent !== null) {
+				console.log('PJAX search', a);
+				e.preventDefault();
+				if (window.pjax && typeof window.pjax.handleClick === 'function') {
+					window.pjax.handleClick({ currentTarget: a, preventDefault: () => { } }, a);
+				} else if (window.pjax && typeof window.pjax.loadUrl === 'function') {
+					window.pjax.loadUrl(a.href);
+				} else {
+					window.location.href = a.href;
+				}
+			}
+		}
+	}, true);
+
+	// 原生事件代理，捕获所有.search-title点击，读取data-path并用PJAX跳转
+	document.body.addEventListener('click', function(e) {
+		let a = e.target.closest('a.search-title');
+		if (a && a.hasAttribute('data-path')) {
+			var path = a.getAttribute('data-path');
+			if (path) {
+				e.preventDefault();
+				var url = path;
+				if (!/^https?:/.test(url)) {
+					url = window.yiliaConfig.root + url.replace(/^\//, '');
+				}
+				if (window.Pjax && window.pjax) {
+					if (typeof window.pjax.handleClick === 'function') {
+						var fakeA = document.createElement('a');
+						fakeA.href = url;
+						window.pjax.handleClick({ currentTarget: fakeA, preventDefault: () => { } }, fakeA);
+					} else if (typeof window.pjax.loadUrl === 'function') {
+						window.pjax.loadUrl(url);
+					} else {
+						window.location.href = url;
+					}
+				} else {
+					window.location.href = url;
+				}
+			}
+		}
+	}, true);
 }
 
 init()

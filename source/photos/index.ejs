@@ -20,9 +20,23 @@ abbrlink: 36262
       var $script = document.createElement('script')
       document.getElementsByTagName('body')[0].appendChild($script)
       $script.setAttribute('src', path)
+      return $script
     }
-    setTimeout(function() {
-      loadScript('./ins.js')
-    }, 0)
+    
+    // 检查是否已经加载过脚本
+    if (!document.querySelector('script[src*="ins.js"]')) {
+      var script = loadScript('./ins.js')
+      // ins.js 会自动调用 Ins.init()，所以不需要手动调用
+    }
+    
+    // 为 PJAX 环境添加额外的初始化检查
+    if (typeof window.pjax !== 'undefined') {
+      // 如果是在 PJAX 环境中，确保脚本正确加载
+      setTimeout(function() {
+        if (typeof Ins === 'undefined') {
+          var script = loadScript('./ins.js')
+        }
+      }, 100);
+    }
   })()
 </script>
