@@ -10,12 +10,12 @@ date: 2025-07-03 11:19:22
 ---
 
 #### 集成依赖
-<!-- more -->
-
 ```
 firebase_messaging: ^15.2.7
 flutter_local_notifications: ^19.2.1
 ```
+<!-- more -->
+
 如果前面有使用firebase相关的功能比如```firebase_auth```、```firebase_core```，会需要升级，一般建议全都使用最新的,
 firebase相关的集成这里先默认都已经集成完毕
 
@@ -164,9 +164,10 @@ await Firebase.initializeApp(
 
 #### 注意事项
 
-1. 推送图标在安卓上需要单独设置，iOS不需要，单独让设计出一张白色透明背景的图，建议48*48的尺寸，太小了会显示不清，图片放在```android/app/src/main/res/drawable```文件夹下面，设置的时候直接写图片名称就可以了
-2. 获取到的Token会刷新，针对安卓，可以在
-```AndroidManifest.xml```中新增
+1.推送图标在安卓上需要单独设置，iOS不需要，单独让设计出一张白色透明背景的图，建议48*48的尺寸，太小了会显示不清，图片放在```android/app/src/main/res/drawable```文件夹下面，设置的时候直接写图片名称就可以了
+
+2.获取到的Token会刷新，针对安卓，可以在```AndroidManifest.xml```中新增
+
 ```
         <meta-data
             android:name="firebase_messaging_auto_init_enabled"
@@ -180,7 +181,9 @@ iOS上需要在```info.plist```文件中新增
 ```
 FirebaseMessagingAutoInitEnabled = No
 ```
-3. 安卓集成```flutter_local_notifications```时，需要额外配置脱糖
+
+3.安卓集成```flutter_local_notifications```时，需要额外配置脱糖
+
 ```
 compileOptions {
     isCoreLibraryDesugaringEnabled = true
@@ -195,7 +198,8 @@ dependencies {
  ...
 }
 ```
-4. iOS集成时需要在AppDelegate文件中新增初始化代码
+
+4.iOS集成时需要在AppDelegate文件中新增初始化代码
 ```
 import Flutter
 import UIKit
